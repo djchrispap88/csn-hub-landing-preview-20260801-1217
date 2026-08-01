@@ -1,0 +1,1339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSN Hub Sales Landing Page Draft</title>
+  <meta name="description" content="Review draft for the CSN Hub childcare operations landing page.">
+  <style>
+    :root {
+      --blue: #1E63C6;
+      --green: #6CCB3F;
+      --teal: #2EA8D8;
+      --navy: #1B2430;
+      --text: #334155;
+      --muted: #6B7280;
+      --line: #D9E3EF;
+      --soft: #F5F7FA;
+      --white: #FFFFFF;
+      --amber: #F5A524;
+      --red: #D94E4E;
+      --shadow: 0 18px 45px rgba(18, 34, 59, 0.12);
+      --radius: 8px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--white);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom: 1px solid rgba(217, 227, 239, 0.8);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100% - 32px));
+      min-height: 72px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      width: 164px;
+      height: 54px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: #475569;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .navlinks a:hover {
+      color: var(--blue);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 12px 18px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1;
+      border: 1px solid transparent;
+      white-space: nowrap;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button-primary {
+      background: var(--green);
+      color: #102016;
+      box-shadow: 0 10px 25px rgba(108, 203, 63, 0.28);
+    }
+
+    .button-primary:hover {
+      background: #5db936;
+    }
+
+    .button-secondary {
+      background: var(--white);
+      color: var(--blue);
+      border-color: rgba(30, 99, 198, 0.24);
+      box-shadow: 0 8px 22px rgba(30, 99, 198, 0.08);
+    }
+
+    .button-dark {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .button-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      display: inline-grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.55);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .section {
+      padding: 86px 0;
+    }
+
+    .section-soft {
+      background: var(--soft);
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--blue), var(--teal), var(--green));
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 78px 0 64px;
+      background:
+        linear-gradient(135deg, rgba(30, 99, 198, 0.08) 0%, rgba(46, 168, 216, 0.08) 42%, rgba(108, 203, 63, 0.08) 100%),
+        var(--white);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(420px, 1.05fr);
+      gap: 56px;
+      align-items: center;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--navy);
+      line-height: 1.04;
+      letter-spacing: 0;
+      margin: 0;
+    }
+
+    h1 {
+      margin-top: 20px;
+      max-width: 690px;
+      font-size: clamp(42px, 7vw, 78px);
+      font-weight: 850;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 850;
+    }
+
+    h3 {
+      font-size: 19px;
+      font-weight: 850;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+      margin-top: 22px;
+      font-size: 20px;
+      color: #475569;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .trust-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 36px;
+      padding: 8px 12px;
+      border: 1px solid rgba(30, 99, 198, 0.16);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: #334155;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--green);
+    }
+
+    .product-visual {
+      position: relative;
+      min-height: 590px;
+    }
+
+    .desktop-screen {
+      position: absolute;
+      inset: 28px 0 auto 0;
+      min-height: 490px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(30, 99, 198, 0.18);
+      background: #FFFFFF;
+      box-shadow: var(--shadow);
+    }
+
+    .screen-bar {
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 0 18px;
+      border-bottom: 1px solid var(--line);
+      background: #FFFFFF;
+    }
+
+    .screen-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--navy);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .screen-brand img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .screen-tabs {
+      display: flex;
+      gap: 6px;
+    }
+
+    .screen-tab {
+      min-width: 58px;
+      height: 8px;
+      border-radius: 999px;
+      background: #E5EDF7;
+    }
+
+    .screen-tab.active {
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+    }
+
+    .screen-body {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      min-height: 440px;
+    }
+
+    .side-nav {
+      padding: 18px;
+      background: #F8FAFC;
+      border-right: 1px solid var(--line);
+    }
+
+    .nav-pill {
+      height: 38px;
+      margin-bottom: 8px;
+      padding: 0 12px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #475569;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .nav-pill.active {
+      color: var(--blue);
+      background: #EAF3FF;
+    }
+
+    .mini-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 5px;
+      display: inline-grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--blue);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .screen-main {
+      padding: 22px;
+    }
+
+    .screen-title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .screen-title {
+      color: var(--navy);
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    .screen-subtitle {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .status-badge {
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: #1B4520;
+      background: rgba(108, 203, 63, 0.18);
+      font-size: 11px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .metric {
+      min-height: 88px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #FFFFFF;
+    }
+
+    .metric-label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .metric-value {
+      margin-top: 9px;
+      color: var(--navy);
+      font-size: 26px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .metric-note {
+      margin-top: 7px;
+      color: #64748B;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .table-preview {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #FFFFFF;
+    }
+
+    .table-head,
+    .table-row {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 12px 14px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .table-head {
+      color: var(--muted);
+      background: #F8FAFC;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .table-row {
+      border-top: 1px solid var(--line);
+      color: #334155;
+    }
+
+    .table-status {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 5px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .ok {
+      background: rgba(108, 203, 63, 0.18);
+      color: #1E5A28;
+    }
+
+    .warn {
+      background: rgba(245, 165, 36, 0.18);
+      color: #7A4B00;
+    }
+
+    .phone-screen {
+      position: absolute;
+      width: 238px;
+      right: 20px;
+      bottom: 2px;
+      border: 9px solid var(--navy);
+      border-radius: 30px;
+      overflow: hidden;
+      background: #FFFFFF;
+      box-shadow: 0 20px 46px rgba(18, 34, 59, 0.2);
+    }
+
+    .phone-top {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      background: var(--navy);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .phone-body {
+      padding: 16px;
+      background: #FFFFFF;
+    }
+
+    .phone-heading {
+      color: var(--navy);
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    .phone-card {
+      margin-top: 12px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #F8FAFC;
+    }
+
+    .phone-label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .phone-value {
+      margin-top: 7px;
+      color: var(--navy);
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .phone-action {
+      margin-top: 12px;
+      min-height: 38px;
+      border-radius: var(--radius);
+      display: grid;
+      place-items: center;
+      color: #102016;
+      background: var(--green);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .section-intro {
+      max-width: 780px;
+      margin-bottom: 38px;
+    }
+
+    .section-intro p {
+      margin: 16px 0 0;
+      color: #475569;
+      font-size: 18px;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .problem-item,
+    .module-card,
+    .compare-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+    }
+
+    .problem-item {
+      min-height: 154px;
+      padding: 22px;
+    }
+
+    .problem-item strong {
+      display: block;
+      color: var(--navy);
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
+    .problem-item p,
+    .module-card p,
+    .compare-card p {
+      margin: 0;
+      color: #526173;
+    }
+
+    .spine-band {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .module-map {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .module-node {
+      min-height: 82px;
+      padding: 14px;
+      border: 1px solid rgba(30, 99, 198, 0.16);
+      border-radius: var(--radius);
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .module-node.center {
+      color: #FFFFFF;
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      box-shadow: var(--shadow);
+    }
+
+    .node-kicker {
+      color: inherit;
+      opacity: 0.78;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .node-title {
+      color: inherit;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .module-card {
+      min-height: 168px;
+      padding: 18px;
+    }
+
+    .module-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius);
+      display: grid;
+      place-items: center;
+      margin-bottom: 14px;
+      color: #FFFFFF;
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .module-card p {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .time-section {
+      color: var(--white);
+      background:
+        linear-gradient(135deg, rgba(27, 36, 48, 0.98), rgba(25, 73, 115, 0.96)),
+        var(--navy);
+    }
+
+    .time-section h2,
+    .time-section h3 {
+      color: var(--white);
+    }
+
+    .time-section .section-intro p {
+      color: #D8E4F2;
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .workflow-step {
+      position: relative;
+      min-height: 142px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .step-number {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      color: #102016;
+      background: var(--green);
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .workflow-step p {
+      margin: 8px 0 0;
+      color: #D8E4F2;
+      font-size: 14px;
+    }
+
+    .compare-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: 0 12px 32px rgba(18, 34, 59, 0.06);
+    }
+
+    .compare-table {
+      width: 100%;
+      min-width: 940px;
+      border-collapse: collapse;
+    }
+
+    .compare-table th,
+    .compare-table td {
+      padding: 18px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .compare-table th {
+      color: var(--navy);
+      background: #F8FAFC;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .compare-table td:first-child {
+      color: var(--navy);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .compare-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .cta-band {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--teal) 58%, var(--green) 100%);
+      color: var(--white);
+      padding: 78px 0;
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.55fr);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .cta-band h2 {
+      color: var(--white);
+    }
+
+    .cta-band p {
+      max-width: 690px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 18px;
+    }
+
+    .access-panel {
+      padding: 22px;
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--navy);
+      box-shadow: var(--shadow);
+    }
+
+    .field {
+      margin-top: 12px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      color: #475569;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .field input {
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      font: inherit;
+      color: var(--navy);
+      background: #F8FAFC;
+    }
+
+    .field input::placeholder {
+      color: #94A3B8;
+    }
+
+    .form-note {
+      margin-top: 12px;
+      color: #64748B;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .visual-notes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .visual-note {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #FFFFFF;
+    }
+
+    .visual-note strong {
+      color: var(--navy);
+    }
+
+    .visual-note p {
+      margin: 8px 0 0;
+      color: #526173;
+      font-size: 14px;
+    }
+
+    .footer {
+      padding: 34px 0;
+      color: #64748B;
+      border-top: 1px solid var(--line);
+      background: #FFFFFF;
+    }
+
+    .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .footer img {
+      width: 128px;
+      height: 44px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    @media (max-width: 1040px) {
+      .hero-grid,
+      .spine-band,
+      .cta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-visual {
+        min-height: 560px;
+      }
+
+      .module-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .workflow {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        min-height: 66px;
+      }
+
+      .logo {
+        width: 132px;
+        height: 46px;
+      }
+
+      .navlinks {
+        display: none;
+      }
+
+      .hero {
+        padding: 48px 0 46px;
+      }
+
+      .section {
+        padding: 58px 0;
+      }
+
+      h1 {
+        font-size: clamp(40px, 13vw, 56px);
+      }
+
+      .hero-copy,
+      .section-intro p,
+      .cta-band p {
+        font-size: 16px;
+      }
+
+      .hero-actions .button {
+        width: 100%;
+      }
+
+      .product-visual {
+        min-height: 720px;
+      }
+
+      .desktop-screen {
+        position: relative;
+        inset: auto;
+        min-height: auto;
+      }
+
+      .screen-body {
+        grid-template-columns: 1fr;
+      }
+
+      .side-nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav-pill {
+        margin: 0;
+      }
+
+      .metric-grid,
+      .problem-grid,
+      .module-map,
+      .module-grid,
+      .workflow,
+      .visual-notes {
+        grid-template-columns: 1fr;
+      }
+
+      .screen-title-row,
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .table-head,
+      .table-row {
+        grid-template-columns: 1fr 0.8fr;
+      }
+
+      .table-head span:nth-child(n+3),
+      .table-row span:nth-child(n+3) {
+        display: none;
+      }
+
+      .phone-screen {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: min(280px, 100%);
+        margin: 22px auto 0;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .container,
+      .nav,
+      .footer-inner {
+        width: min(var(--max), calc(100% - 24px));
+      }
+
+      .screen-main {
+        padding: 16px;
+      }
+
+      .button {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#top" aria-label="CSN Hub home">
+        <img class="logo" src="2026-08-01-csn-hub-sales-landing-page-assets/csn-logo-horizontal.png" alt="Childcare Supply Network">
+      </a>
+      <div class="navlinks" aria-label="Page sections">
+        <a href="#platform">Platform</a>
+        <a href="#modules">Modules</a>
+        <a href="#compare">Compare</a>
+        <a href="#early-access" class="button button-primary"><span class="button-icon" aria-hidden="true">+</span>Request Early Access</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Built for childcare owners and directors</div>
+          <h1>Childcare operations without the back-office sprawl.</h1>
+          <p class="hero-copy">CSN Hub gives owners and directors a clean command system for team records, time and attendance, scheduling, PTO, HR, licensing, documents, CRM, reports, and AI support. Start with the modules you need. Keep every workflow tied to the right person, role, location, and permission.</p>
+          <div class="hero-actions">
+            <a href="#early-access" class="button button-primary"><span class="button-icon" aria-hidden="true">+</span>Request Early Access</a>
+            <a href="#modules" class="button button-secondary"><span class="button-icon" aria-hidden="true">&gt;</span>See The Module Map</a>
+          </div>
+          <div class="trust-row" aria-label="Trust notes">
+            <span class="trust-chip"><span class="dot"></span>Operator-built</span>
+            <span class="trust-chip"><span class="dot"></span>Multi-tenant from the start</span>
+            <span class="trust-chip"><span class="dot"></span>Time & Attendance first</span>
+          </div>
+        </div>
+
+        <div class="product-visual" aria-label="CSN Hub interface preview">
+          <div class="desktop-screen">
+            <div class="screen-bar">
+              <div class="screen-brand">
+                <img src="2026-08-01-csn-hub-sales-landing-page-assets/csn-logo-icon.png" alt="">
+                CSN Hub
+              </div>
+              <div class="screen-tabs" aria-hidden="true">
+                <span class="screen-tab active"></span>
+                <span class="screen-tab"></span>
+                <span class="screen-tab"></span>
+              </div>
+            </div>
+            <div class="screen-body">
+              <div class="side-nav">
+                <div class="nav-pill active"><span class="mini-icon">T</span>Team</div>
+                <div class="nav-pill"><span class="mini-icon">A</span>Time</div>
+                <div class="nav-pill"><span class="mini-icon">S</span>Schedule</div>
+                <div class="nav-pill"><span class="mini-icon">D</span>Docs</div>
+                <div class="nav-pill"><span class="mini-icon">R</span>Reports</div>
+              </div>
+              <div class="screen-main">
+                <div class="screen-title-row">
+                  <div>
+                    <div class="screen-title">Team Command</div>
+                    <div class="screen-subtitle">People, roles, locations, access, and daily review</div>
+                  </div>
+                  <span class="status-badge">Owner view</span>
+                </div>
+                <div class="metric-grid">
+                  <div class="metric">
+                    <div class="metric-label">Clocked in</div>
+                    <div class="metric-value">18</div>
+                    <div class="metric-note">Across locations</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-label">Needs review</div>
+                    <div class="metric-value">4</div>
+                    <div class="metric-note">Time exceptions</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-label">Access checks</div>
+                    <div class="metric-value">9</div>
+                    <div class="metric-note">Module changes</div>
+                  </div>
+                </div>
+                <div class="table-preview" aria-label="Sample team review table">
+                  <div class="table-head">
+                    <span>Team member</span>
+                    <span>Location</span>
+                    <span>Module access</span>
+                    <span>Status</span>
+                  </div>
+                  <div class="table-row">
+                    <span>Director</span>
+                    <span>115</span>
+                    <span>Team, Time, Docs</span>
+                    <span class="table-status ok">Ready</span>
+                  </div>
+                  <div class="table-row">
+                    <span>Assistant Director</span>
+                    <span>201</span>
+                    <span>Team, Time</span>
+                    <span class="table-status warn">Review</span>
+                  </div>
+                  <div class="table-row">
+                    <span>Lead Teacher</span>
+                    <span>406</span>
+                    <span>Clock only</span>
+                    <span class="table-status ok">Ready</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone-screen">
+            <div class="phone-top">Today</div>
+            <div class="phone-body">
+              <div class="phone-heading">Time review</div>
+              <div class="phone-card">
+                <div class="phone-label">Missing punches</div>
+                <div class="phone-value">3</div>
+              </div>
+              <div class="phone-card">
+                <div class="phone-label">Owner approvals</div>
+                <div class="phone-value">5</div>
+              </div>
+              <div class="phone-action">Review timecards</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="platform">
+      <div class="container">
+        <div class="section-intro">
+          <div class="eyebrow">The problem</div>
+          <h2>The center is running. The systems are not always keeping up.</h2>
+          <p>Childcare owners need quick answers during the day, but staff records, timecards, documents, CRM notes, and access controls often live in different places.</p>
+        </div>
+        <div class="problem-grid">
+          <div class="problem-item">
+            <strong>Scattered team records</strong>
+            <p>Roles, locations, HR notes, licensing items, and access decisions end up split across profiles, spreadsheets, and messages.</p>
+          </div>
+          <div class="problem-item">
+            <strong>Time review friction</strong>
+            <p>Missing punches, breaks, corrections, and manager approvals become a payroll-week scramble instead of a clean daily review.</p>
+          </div>
+          <div class="problem-item">
+            <strong>Disconnected handoffs</strong>
+            <p>Enrollment, scheduling, documents, and operations do not always connect back to the same person, location, and permission structure.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container spine-band">
+        <div class="section-intro">
+          <div class="eyebrow">The solution</div>
+          <h2>One hub. Clean modules. One team spine.</h2>
+          <p>CSN Hub starts with Team because every real workflow touches a person. Each module stays focused, but connects back to the same role, location, status, and access record.</p>
+          <div class="hero-actions">
+            <a href="#early-access" class="button button-primary"><span class="button-icon" aria-hidden="true">+</span>Request Early Access</a>
+            <a href="#compare" class="button button-secondary"><span class="button-icon" aria-hidden="true">&gt;</span>Compare Your Stack</a>
+          </div>
+        </div>
+        <div class="module-map" aria-label="Team spine module map">
+          <div class="module-node"><span class="node-kicker">People</span><span class="node-title">HR</span></div>
+          <div class="module-node"><span class="node-kicker">Daily ops</span><span class="node-title">Scheduling</span></div>
+          <div class="module-node"><span class="node-kicker">Approvals</span><span class="node-title">PTO</span></div>
+          <div class="module-node"><span class="node-kicker">Files</span><span class="node-title">Documents</span></div>
+          <div class="module-node center"><span class="node-kicker">Spine</span><span class="node-title">Team</span></div>
+          <div class="module-node"><span class="node-kicker">Review</span><span class="node-title">Time</span></div>
+          <div class="module-node"><span class="node-kicker">Readiness</span><span class="node-title">Licensing</span></div>
+          <div class="module-node"><span class="node-kicker">Pipeline</span><span class="node-title">CRM</span></div>
+          <div class="module-node"><span class="node-kicker">Owner view</span><span class="node-title">Reports</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="modules">
+      <div class="container">
+        <div class="section-intro">
+          <div class="eyebrow">Module map</div>
+          <h2>Modules built around how childcare centers actually run.</h2>
+          <p>Turn modules on or off by tenant. Keep disabled modules out of the way. Keep enabled modules tied to the right people, locations, and permissions.</p>
+        </div>
+        <div class="module-grid">
+          <div class="module-card"><div class="module-icon">TM</div><h3>Team</h3><p>The person and access record for every employee, role, location, and module permission.</p></div>
+          <div class="module-card"><div class="module-icon">TA</div><h3>Time</h3><p>Clocking, breaks, corrections, manager review, owner approval, and weekly review.</p></div>
+          <div class="module-card"><div class="module-icon">WS</div><h3>Scheduling</h3><p>Planned coverage tied to locations, roles, and daily staffing needs.</p></div>
+          <div class="module-card"><div class="module-icon">PT</div><h3>PTO</h3><p>Requests, balances, approvals, and visibility before coverage gets tight.</p></div>
+          <div class="module-card"><div class="module-icon">HR</div><h3>HR</h3><p>Notes, status changes, acknowledgements, and employment record history.</p></div>
+          <div class="module-card"><div class="module-icon">LC</div><h3>Licensing</h3><p>Requirements, expirations, missing items, and location-ready views.</p></div>
+          <div class="module-card"><div class="module-icon">DC</div><h3>Documents</h3><p>Staff files, signed records, forms, and organized document access.</p></div>
+          <div class="module-card"><div class="module-icon">CR</div><h3>CRM</h3><p>Lead and enrollment visibility that can connect to the operating side.</p></div>
+          <div class="module-card"><div class="module-icon">RP</div><h3>Reports</h3><p>Owner views for time, staffing, compliance, access, and module activity.</p></div>
+          <div class="module-card"><div class="module-icon">AI</div><h3>AI Assistant</h3><p>Plain-language help for owners and directors who need answers fast.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section time-section">
+      <div class="container">
+        <div class="section-intro">
+          <div class="eyebrow">First real module</div>
+          <h2>Time and attendance that owners can actually review.</h2>
+          <p>Time & Attendance is the first CSN Hub module being locked end-to-end because it is one of the highest-friction workflows in a center. This is the review layer before numbers move downstream, not a payroll replacement claim.</p>
+        </div>
+        <div class="workflow" aria-label="Time and attendance workflow">
+          <div class="workflow-step"><div class="step-number">1</div><h3>Clock activity</h3><p>Staff clock in, clock out, and record breaks by location.</p></div>
+          <div class="workflow-step"><div class="step-number">2</div><h3>Exceptions</h3><p>Missing punches and corrections surface before payroll review.</p></div>
+          <div class="workflow-step"><div class="step-number">3</div><h3>Manager review</h3><p>Directors review their assigned locations and team members.</p></div>
+          <div class="workflow-step"><div class="step-number">4</div><h3>Owner approval</h3><p>Owners keep final approval control for the weekly review.</p></div>
+          <div class="workflow-step"><div class="step-number">5</div><h3>Audit trail</h3><p>Changes stay tied to who changed what, and when.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="compare">
+      <div class="container">
+        <div class="section-intro">
+          <div class="eyebrow">Fit next to known tools</div>
+          <h2>How CSN Hub fits next to the tools childcare centers already know.</h2>
+          <p>The point is not that every center should throw away the tools it already uses. The point is that childcare operators still need a cleaner command layer for team, time, access, documents, approvals, and module controls.</p>
+        </div>
+        <div class="compare-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Platform</th>
+                <th>Official focus</th>
+                <th>Where it fits well</th>
+                <th>CSN Hub angle next to it</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Procare</td>
+                <td>Child care management software covering family information, attendance, billing, parent communication, classroom management, compliance, staff management, reporting, and multi-center needs.</td>
+                <td>Mature all-in-one center management when billing, attendance, parent communication, classroom, and compliance workflows need one established platform.</td>
+                <td>Position CSN Hub as the owner-operator operations layer for Team, access, Time & Attendance review, module controls, licensing, HR, documents, CRM, and reports.</td>
+              </tr>
+              <tr>
+                <td>brightwheel</td>
+                <td>Enrollment, billing, attendance, family updates, learning, staff messaging, time tracking, payroll sync, staff management, records, multi-site management, ratios, and scheduling.</td>
+                <td>Strong parent and staff app experience, billing, communication, enrollment, learning, attendance, and broad daily center workflows.</td>
+                <td>Focus CSN Hub on owner and director operating controls, clean employee records, location permissions, module access, and back-office review.</td>
+              </tr>
+              <tr>
+                <td>IntelliKid Systems</td>
+                <td>Lead management, marketing automation, enrollment, waitlists, source tracking, employee recruitment automation, and IntelliForms for forms and compliance.</td>
+                <td>Enrollment growth, lead follow-up, tour pipeline, marketing attribution, staff recruiting, and forms.</td>
+                <td>Make CRM one module inside the wider operating system, then connect leads, team, documents, access, reports, and operations.</td>
+              </tr>
+              <tr>
+                <td>LineLeader by ChildCareCRM</td>
+                <td>Unified childcare platform for CRM, digital registration, family engagement, operations, billing, attendance, staff management, lead capture, marketing automation, and reporting.</td>
+                <td>Broad suite for enrollment, family engagement, billing, attendance, staff management, and multi-site visibility.</td>
+                <td>Differentiate through operator-built modularity, Team as the system spine, tenant-level module controls, and a clean first slice around staff access and time review.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container">
+        <div class="section-intro">
+          <div class="eyebrow">Visual direction</div>
+          <h2>Modern B2B SaaS, not parent-facing childcare marketing.</h2>
+          <p>The review draft uses CSN blue, teal, green, navy, white, and light gray. The page should sell operational clarity with realistic UI, clean tables, module maps, and approval flows.</p>
+        </div>
+        <div class="visual-notes">
+          <div class="visual-note"><strong>Hero visual</strong><p>Mobile owner view beside desktop admin view, with Team, Time Review, and Module Access visible right away.</p></div>
+          <div class="visual-note"><strong>Module rhythm</strong><p>Tight icon-supported module blocks. Short operator benefits. No oversized feature dump.</p></div>
+          <div class="visual-note"><strong>Comparison tone</strong><p>Calm table. No competitor logos. No broad better-than claims against mature platforms.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band" id="early-access">
+      <div class="container cta-grid">
+        <div>
+          <div class="eyebrow">Early operator review</div>
+          <h2>Help shape the operator-first childcare hub.</h2>
+          <p>If you run a childcare center and your back office is spread across too many systems, CSN Hub is opening early operator conversations. No public launch claim. Just a practical walkthrough of your current workflow and where CSN Hub may fit.</p>
+          <div class="hero-actions">
+            <a href="#" class="button button-dark"><span class="button-icon" aria-hidden="true">+</span>Request Early Access</a>
+            <a href="#" class="button button-secondary"><span class="button-icon" aria-hidden="true">&gt;</span>Talk Through Your Workflow</a>
+          </div>
+        </div>
+        <div class="access-panel" aria-label="Early access form preview">
+          <h3>Early access interest</h3>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Operator name" disabled>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="name@center.com" disabled>
+          </div>
+          <div class="field">
+            <label for="center">Center</label>
+            <input id="center" type="text" placeholder="Center or company name" disabled>
+          </div>
+          <p class="form-note">Review-only form preview. No submission is wired in this local draft.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <img src="2026-08-01-csn-hub-sales-landing-page-assets/csn-logo-horizontal.png" alt="Childcare Supply Network">
+      <div>CSN Hub sales landing page draft. Local review artifact only. No public publish or external claim.</div>
+    </div>
+  </footer>
+</body>
+</html>
